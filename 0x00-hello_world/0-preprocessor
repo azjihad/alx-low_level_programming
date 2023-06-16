@@ -1,10 +1,2 @@
 #!/bin/bash
-
-# Set the C file name
-CFILE="$1"
-
-# Define the output file name
-OUTPUT_FILE="c"
-
-# Run the C file through the preprocessor and save the result to the output file
-gcc -E -P "$CFILE" -o "$OUTPUT_FILE" -Wall -Werror -Wextra -pedantic -std=gnu89
+gcc -E -P -o c "$CFILE"
