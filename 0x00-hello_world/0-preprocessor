@@ -1,2 +1,6 @@
 #!/bin/bash
+<<<<<<< HEAD
 gcc -E $CFILE -o c
+=======
+gcc -E "$CFILE" | sed '/^\s*$/d' > c
+>>>>>>> b83762a46bee9fde550fda36b3139af713c6fed2
