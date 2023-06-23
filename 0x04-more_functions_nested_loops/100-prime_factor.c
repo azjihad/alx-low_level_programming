@@ -2,69 +2,50 @@
 #include <math.h>
 
 /**
- * main - finds and prints the largest prime factor of the number 612852475143
- * followed by a new line
- * Return: Always 0 (Success)
+ * largest_prime_factor - Finds the largest prime factor of a number
+ * @n: The number to find the largest prime factor of
+ *
+ * Return: The largest prime factor of the number
  */
-int main(void)
+long largest_prime_factor(long n)
 {
-	long int n;
-	long int max;
-	long int i;
-
-	n = 612852475143;
-	max = -1;
+	long largest_factor = -1;
+	long i;
 
 	while (n % 2 == 0)
 	{
-		max = 2;
+		largest_factor = 2;
 		n /= 2;
 	}
 
-	for (i = 3; i <= sqrt(n); i = i + 2)
+	for (i = 3; i <= sqrt(n); i += 2)
 	{
 		while (n % i == 0)
 		{
-			max = i;
-			n = n / i;
+			largest_factor = i;
+			n /= i;
 		}
 	}
 
 	if (n > 2)
-		max = n;
+		largest_factor = n;
 
-	printf("%ld\n", max);
-
-	return (0);
+	return largest_factor;
 }
-
-
-101-print_number.c
-
-#include "main.h"
 
 /**
- * print_number - prints an integer
- * @n: integer to be printed
+ * main - Entry point
+ *
+ * Return: Always 0
  */
-void print_number(int n)
+int main(void)
 {
-	unsigned int n1;
+	long number = 612852475143;
+	long largest_prime;
 
-	if (n < 0)
-	{
-		n1 = -n;
-		_putchar('-');
-	} else
-	{
-		n1 = n;
-	}
+	largest_prime = largest_prime_factor(number);
 
-	if (n1 / 10)
-	{
-		print_number(n1 / 10);
-	}
+	printf("%ld\n", largest_prime);
 
-	_putchar((n1 % 10) + '0');
+	return 0;
 }
-
